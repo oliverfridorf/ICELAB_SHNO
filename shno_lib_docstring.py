@@ -95,6 +95,18 @@ class keysight36300:
         voltage = float(self.psu.query(f'MEASURE:VOLTAGE? CH{ch}'))
         current = float(self.psu.query(f'MEASURE:CURRENT? CH{ch}'))
         return voltage, current
+
+    def lna(self, state=False)
+        """Turns on and of the output on ch2 to the LNA with the correct voltage and current
+
+        Args:
+            state (bool): State of the LNA. True = ON, False = OFF
+        """
+        if state == True:
+            self.set_output(12, 0.5, 2, turn_on=True)
+        elif state == False:
+            self.off()
+        
     
     def on(self, ch=[]):
         """Turn on specified channels.
